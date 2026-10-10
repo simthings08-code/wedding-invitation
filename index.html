@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f7e9e2">
+<title>Our Wedding Invitation</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Great+Vibes&family=Manrope:wght@300;400;500;600&display=swap');
+:root{--ivory:#fffaf3;--blush:#f2d9d3;--wine:#681f35;--rose:#9d4b5e;--gold:#c6a15d;--sage:#7a8b6b;--ink:#4f3a3d}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--ivory);color:var(--ink);font-family:Manrope,Arial,sans-serif}button,a{font:inherit}
+#cover{min-height:100svh;display:flex;align-items:center;justify-content:center;flex-direction:column;position:relative;overflow:hidden;padding:25px 18px;background:radial-gradient(ellipse at 50% 30%,#fffdf8 0,#f8e7df 50%,#e8c8c3 100%);perspective:1500px}
+.cover-title{text-align:center;z-index:2;margin-bottom:8px}.eyebrow{text-transform:uppercase;letter-spacing:.25em;font-size:.65rem;color:var(--rose)}.cover-title h1{font:500 clamp(2rem,7vw,3.6rem) 'Cormorant Garamond',serif;color:var(--wine);margin:10px 0}
+.scene{width:min(84vw,410px);height:340px;position:relative;perspective:1300px;display:grid;place-items:center}
+.envelope{width:100%;height:245px;position:absolute;top:38px;transform-style:preserve-3d;filter:drop-shadow(0 28px 20px #55202b2e);transition:transform 1s ease}
+.env-back{position:absolute;inset:0;background:linear-gradient(140deg,#9c4357,#641d34 75%);border:1px solid #d8bd7b;border-radius:5px;overflow:hidden}
+.env-back:before{content:"";position:absolute;inset:12px;border:1px solid #e6cc8d88}
+.env-lower{position:absolute;inset:0;z-index:3;background:linear-gradient(150deg,#7c263d,#5d192f);clip-path:polygon(0 100%,0 0,50% 58%,100% 0,100% 100%);border-radius:4px}
+.env-left,.env-right{position:absolute;inset:0;z-index:2}
+.env-left{background:linear-gradient(135deg,#9b3b53,#6b1e35);clip-path:polygon(0 0,53% 50%,0 100%)}
+.env-right{background:linear-gradient(225deg,#a3475a,#681e35);clip-path:polygon(100% 0,47% 50%,100% 100%)}
+.flap{position:absolute;left:0;top:0;width:100%;height:65%;z-index:6;background:linear-gradient(160deg,#b45567,#78263e 80%);clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top center;transform:rotateX(0deg);backface-visibility:visible;transition:transform 1s cubic-bezier(.2,.75,.2,1);filter:drop-shadow(0 5px 3px #45152525)}
+.card{position:absolute;z-index:1;left:7%;top:4%;width:86%;height:91%;padding:22px 14px;background:linear-gradient(145deg,#fffdf7,#f6e7d8);border:1px solid var(--gold);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;transform:translateY(0) translateZ(-5px);transition:transform 1.25s cubic-bezier(.18,.78,.2,1);box-shadow:0 3px 12px #40121b24}
+.card:before{content:"";position:absolute;inset:9px;border:1px solid #c6a15d80;pointer-events:none}.card small{font-size:.56rem;letter-spacing:.22em;color:var(--rose);z-index:1}.card h2{font:clamp(2rem,7vw,3rem) 'Great Vibes',cursive;color:var(--wine);margin:12px 0;z-index:1}.card p{font: .8rem/1.6 'Cormorant Garamond',serif;z-index:1;margin:4px}.card .floral{color:var(--gold);font-size:1.5rem;z-index:1}
+.seal{position:absolute;z-index:8;left:50%;top:51%;transform:translate(-50%,-50%);width:63px;height:63px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 30% 25%,#f9e2a0,#bd923b 62%,#805c22);border:1px solid #ffedb5;box-shadow:0 5px 12px #2e101b60;color:#fff5d8;font:1.3rem 'Cormorant Garamond',serif;transition:opacity .35s,transform .5s}
+.envelope.open .flap{transform:rotateX(180deg);z-index:0}.envelope.open .seal{opacity:0;transform:translate(-50%,-50%) scale(.25)}.envelope.open .card{transform:translateY(-74%) translateZ(42px);z-index:7}.envelope.open{transform:translateY(22px) rotateX(1deg)}
+.envelope-label{position:absolute;z-index:5;bottom:18px;left:0;right:0;text-align:center;color:#f8e9cf;font:1.4rem 'Great Vibes',cursive;text-shadow:0 1px 2px #42111f}
+.open-btn{border:1px solid var(--gold);background:#fffaf3;color:var(--wine);border-radius:99px;padding:14px 24px;text-transform:uppercase;letter-spacing:.12em;font-size:.68rem;cursor:pointer;box-shadow:0 8px 20px #5d28321a;z-index:9;transition:.2s}.open-btn:hover{background:var(--wine);color:white;transform:translateY(-2px)}.hint{font-size:.7rem;color:#815a5f;margin:3px 0 12px}
+#details{display:none}#details.show{display:block;animation:appear .8s both}@keyframes appear{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+section.content{padding:78px 20px}.inner{max-width:850px;margin:auto;text-align:center}.script{font-family:'Great Vibes',cursive}.serif{font-family:'Cormorant Garamond',serif}.title{font:500 clamp(2.6rem,7vw,4.5rem) 'Cormorant Garamond',serif;color:var(--wine);margin:12px 0}.couple{font:clamp(3.6rem,10vw,6rem) 'Great Vibes',cursive;color:var(--wine);line-height:1.15;margin:12px 0}.lead{line-height:1.9;max-width:620px;margin:0 auto;color:#70595b;font-size:.9rem}.hero{background:linear-gradient(#f6ded6,#fff4e8 70%,#dfe5d2);position:relative;overflow:hidden}.petals{position:absolute;inset:0;pointer-events:none;overflow:hidden}.petal{position:absolute;top:-20px;color:#b85d6d;animation:fall linear infinite;opacity:.7}@keyframes fall{to{transform:translateY(110vh) rotate(500deg);opacity:.1}}
+.palace{height:180px;max-width:540px;margin:35px auto 0;position:relative}.palace .dome{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);width:130px;height:105px;border:2px solid #c5a16a;background:#fff2dc;border-radius:70px 70px 0 0}.palace .dome:before{content:"";position:absolute;width:65px;height:35px;top:-25px;left:50%;transform:translateX(-50%);border:2px solid #c5a16a;border-radius:50% 50% 0 0;background:#fff2dc}.palace .wing{position:absolute;bottom:20px;width:24%;height:75px;border:2px solid #c5a16a;background:#fff2dc;border-radius:50% 50% 0 0}.palace .left{left:8%}.palace .right{right:8%}.palace .ground{position:absolute;bottom:5px;left:0;right:0;height:20px;border-radius:50%;background:#93a581}
+.soft{background:#f8eee7}.countdown{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:28px 0}.time{min-width:70px;background:#fffaf3;border:1px solid #d7bd86;padding:15px 12px}.time strong{display:block;font:2rem 'Cormorant Garamond',serif;color:var(--wine)}.time span{font-size:.58rem;letter-spacing:.12em;text-transform:uppercase}
+.events{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:28px;text-align:left}.event{padding:24px;background:#fffaf3;border:1px solid #ead9c5}.event h3{font:2rem 'Cormorant Garamond',serif;color:var(--wine);margin:0 0 8px}.event p{font-size:.8rem;line-height:1.8;color:#70595b}
+.venue-card{background:#fffaf3;border:1px solid #d7bd86;padding:30px;max-width:600px;margin:28px auto}.btnlink{display:inline-block;margin:12px 4px;padding:12px 20px;border-radius:99px;border:1px solid var(--gold);text-decoration:none;color:var(--wine);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase}.btnlink.filled{background:var(--wine);color:white;border-color:var(--wine)}
+footer{background:var(--wine);color:#fff0df;text-align:center;padding:58px 20px}footer h2{font-size:clamp(2.8rem,8vw,4.8rem);font-weight:400;margin:10px 0}footer p{font-size:.8rem;line-height:1.8}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s,transform .7s}.reveal.in{opacity:1;transform:none}
+@media(max-width:560px){.scene{height:320px}.envelope{height:215px}.events{grid-template-columns:1fr}.content{padding:60px 18px}.card h2{font-size:2.2rem}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<section id="cover">
+  <div class="cover-title"><div class="eyebrow">A little story begins</div><h1>You are cordially invited</h1></div>
+  <div class="scene">
+    <div class="envelope" id="envelope">
+      <div class="env-back"></div>
+      <div class="card"><small>THE WEDDING OF</small><h2 id="miniNames">Aanya &amp; Aarav</h2><div class="floral">✦ ❦ ✦</div><p>Two hearts, one beautiful story.</p><small>PLEASE JOIN OUR CELEBRATION</small></div>
+      <div class="env-left"></div><div class="env-right"></div><div class="env-lower"></div><div class="flap"></div>
+      <div class="envelope-label">with love</div><div class="seal" id="seal">A ♥ A</div>
+    </div>
+  </div>
+  <div class="hint" id="hint">Tap below to open your invitation</div>
+  <button class="open-btn" id="openBtn">Open invitation ✦</button>
+</section>
+<main id="details">
+<section class="content hero">
+ <div class="petals" id="petals"></div>
+ <div class="inner">
+  <div class="eyebrow reveal">Together with our families</div>
+  <div class="couple reveal"><span id="bride">Aanya</span><br><span style="font:2rem 'Cormorant Garamond';color:var(--gold)">&amp;</span><br><span id="groom">Aarav</span></div>
+  <p class="lead reveal">Joyfully invite you to be part of our most cherished chapter — a celebration of love, family and forever.</p>
+  <div class="palace reveal"><div class="wing left"></div><div class="wing right"></div><div class="dome"></div><div class="ground"></div></div>
+ </div>
+</section>
+<section class="content"><div class="inner reveal"><div class="eyebrow">Save the date</div><h2 class="title">A day to remember</h2><p class="lead">With hearts full of happiness, we would love for you to celebrate this special day with us.</p>
+<div class="countdown"><div class="time"><strong id="days">00</strong><span>Days</span></div><div class="time"><strong id="hours">00</strong><span>Hours</span></div><div class="time"><strong id="minutes">00</strong><span>Minutes</span></div><div class="time"><strong id="seconds">00</strong><span>Seconds</span></div></div><div id="dateLabel" class="eyebrow">14 February 2027 · 6:00 PM</div></div></section>
+<section class="content soft"><div class="inner"><div class="eyebrow reveal">The celebrations</div><h2 class="title reveal">Moments &amp; memories</h2><p class="lead reveal">Every ritual, every laugh, every little moment — made more beautiful with you.</p>
+<div class="events">
+ <article class="event reveal"><h3>Haldi</h3><p>A morning filled with sunshine, turmeric, laughter and blessings.</p><p><b>14 February · 10:00 AM</b><br>Garden Courtyard</p></article>
+ <article class="event reveal"><h3>Mehendi</h3><p>Intricate henna, music and happy hearts gathered together.</p><p><b>14 February · 4:00 PM</b><br>Family Residence</p></article>
+ <article class="event reveal"><h3>Sangeet</h3><p>An evening of dance, music and unforgettable memories.</p><p><b>14 February · 7:00 PM</b><br>Celebration Hall</p></article>
+ <article class="event reveal"><h3>The Wedding</h3><p>Two families, one promise, and a lifetime of love.</p><p><b>15 February · 6:00 PM</b><br><span id="eventVenue">The Royal Garden</span></p></article>
+</div></div></section>
+<section class="content"><div class="inner reveal"><div class="eyebrow">Where we meet</div><h2 class="title">The wedding venue</h2><div class="venue-card"><div style="font-size:2rem;color:var(--gold)">⌖</div><h3 id="venue" class="serif" style="font-size:2rem;color:var(--wine);font-weight:500;margin:10px">The Royal Garden</h3><p class="lead" id="address">Venue address goes here, City, State, India</p><a class="btnlink filled" id="map" href="https://maps.google.com" target="_blank" rel="noopener">View on Google Maps</a></div><p class="lead">Your presence is the most precious gift. We can't wait to celebrate with you.</p><a class="btnlink" id="rsvp" href="mailto:your-email@example.com?subject=Wedding%20RSVP">Kindly RSVP</a></div></section>
+<footer><div class="eyebrow" style="color:#e6c887">With love, always</div><h2 class="script">We can't wait to see you</h2><p>Thank you for being part of our story.<br><span id="footerNames">Aanya &amp; Aarav</span></p><div style="color:#d8b56b;font-size:1.3rem">✦ ❦ ✦</div></footer>
+</main>
+<script>
+/* EDIT THESE DETAILS to personalize the invitation */
+const wedding = {
+  bride: "Aanya",
+  groom: "Aarav",
+  date: "2027-02-15T18:00:00",
+  dateLabel: "Monday, 15 February 2027 · 6:00 PM",
+  venue: "The Royal Garden",
+  address: "Jaipur, Rajasthan, India",
+  mapQuery: "The Royal Garden Jaipur",
+  rsvpEmail: "your-email@example.com"
+};
+document.title=`${wedding.bride} & ${wedding.groom} — Wedding Invitation`;
+document.getElementById("bride").textContent=wedding.bride;
+document.getElementById("groom").textContent=wedding.groom;
+document.getElementById("miniNames").textContent=`${wedding.bride} & ${wedding.groom}`;
+document.getElementById("footerNames").textContent=`${wedding.bride} & ${wedding.groom}`;
+document.getElementById("dateLabel").textContent=wedding.dateLabel;
+document.getElementById("venue").textContent=wedding.venue;
+document.getElementById("eventVenue").textContent=wedding.venue;
+document.getElementById("address").textContent=wedding.address;
+document.getElementById("map").href="https://maps.google.com/?q="+encodeURIComponent(wedding.mapQuery);
+document.getElementById("rsvp").href="mailto:"+wedding.rsvpEmail+"?subject="+encodeURIComponent("Wedding RSVP");
+document.getElementById("seal").textContent=(wedding.bride[0]||"A")+" ♥ "+(wedding.groom[0]||"A");
+let opened=false;
+document.getElementById("openBtn").addEventListener("click",()=>{
+ if(!opened){opened=true;document.getElementById("envelope").classList.add("open");document.getElementById("hint").textContent="Your invitation is opening…";document.getElementById("openBtn").textContent="Enter our story ↓";
+ setTimeout(()=>{document.getElementById("details").classList.add("show");document.getElementById("details").scrollIntoView({behavior:"smooth"});document.getElementById("hint").textContent="";document.getElementById("openBtn").style.display="none"},1000)}
+ else document.getElementById("details").scrollIntoView({behavior:"smooth"});
+});
+const target=new Date(wedding.date).getTime();
+function tick(){let d=Math.max(0,target-Date.now());let v={days:Math.floor(d/86400000),hours:Math.floor(d%86400000/3600000),minutes:Math.floor(d%3600000/60000),seconds:Math.floor(d%60000/1000)};Object.entries(v).forEach(([k,n])=>document.getElementById(k).textContent=String(n).padStart(2,"0"))}
+tick();setInterval(tick,1000);
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+const host=document.getElementById("petals");for(let i=0;i<20;i++){let p=document.createElement("span");p.className="petal";p.textContent=i%2?"✿":"❀";p.style.left=Math.random()*100+"%";p.style.animationDuration=(7+Math.random()*9)+"s";p.style.animationDelay=(-Math.random()*12)+"s";host.appendChild(p)}
+</script>
+</body>
+</html>
